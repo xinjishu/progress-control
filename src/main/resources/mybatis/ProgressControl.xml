@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qishon.pc.domain.repository.ProgressControlRepository">
+    <select id="findByGirard"
+             parameterType="String"
+            resultMap="ProgressControlMap">
+        Select pc.id,
+               pc.girard,
+               pc.progress
+          From progress_control as pc
+        Where pc.girard = #{girard}
+    </select>
+    
+    <resultMap id="ProgressControlMap" type="com.qishon.pc.domain.model.ProgressControl">
+        <id property="id" column="id" />
+        <collection
+                property="progressStepsList"
+                ofType="com.qishon.pc.domain.model.ProgressSteps"
+                column="id"
+                select="com.qishon.pc.domain.repository.ProgressStepsRepository.findByGirardId">
+        </collection>
+    </resultMap>
+</mapper>

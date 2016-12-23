@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<!--/*@thymesVar id="progressControl" type="java.lang.String"*/-->
+<div data-layout-fragment="content">
+
+    <table border="1" cellpadding="0" cellspacing="0">
+        <caption align="top">进度监控</caption>
+        <tr>
+            <th>id</th>
+            <th>girard</th>
+            <th>progress</th>
+            <th>stepsId</th>
+            <th>stepNo</th>
+            <th>stepName</th>
+            <th>allFiles</th>
+            <th>completedFiles</th>
+        </tr>
+        <tr th:each="progressControl : ${progressControls}">
+        <tr th:each="progressSteps : ${progressControl.progressStepsList}">
+            <td th:text="${progressControl.id}">序号</td>
+            <td th:text="${progressControl.girard}">编码</td>
+            <td th:text="${progressControl.progress}">名称</td>
+            <td th:text="${progressSteps.id}"></td>
+            <td th:text="${progressSteps.stepNo}"></td>
+            <td th:text="${progressSteps.stepName}"></td>
+            <td th:text="${progressSteps.allFiles}"></td>
+            <td th:text="${progressSteps.completedFiles}"></td>
+        </tr>
+        </tr>
+    </table>
+
+
+</div>
+</body>
+</html>

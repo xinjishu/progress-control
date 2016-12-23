@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qishon.pc.domain.repository.ProgressStepsRepository">
+    <select id="findByGirardId"
+             parameterType="Integer"
+             resultType="com.qishon.pc.domain.model.ProgressSteps">
+        Select ps.id,
+               ps.girardId,
+               ps.stepNo,
+               ps.stepName,
+               ps.allFiles,
+               ps.completedFiles
+          From proctrl_steps as ps
+        Where ps.girardId = #{girardId}
+    </select>
+</mapper>
