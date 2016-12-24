@@ -1,5 +1,5 @@
 DROP TABLE IF EXISTS progress_control;
-
+DROP TABLE IF EXISTS proctrl_steps;
 CREATE TABLE progress_control(
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     girard varchar(32),
