@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by xm on 2016/12/23.
+ * Created by yuquan.hu on 2016/12/23.
  */
 @Component
 public class ProgressControlManager {
@@ -19,5 +19,19 @@ public class ProgressControlManager {
     public List<ProgressControl> findByGirard(Map<String,Object> map) {
         map.put("girard","file");
         return progressControlRepository.findByGirard(map);
+    }
+    public ProgressControl addProgressControl(ProgressControl progressControl){
+        return progressControlRepository.addProgressControl(progressControl);
+    }
+    public ProgressControl updateProgress(ProgressControl progressControl){
+        return progressControlRepository.updateProgress(progressControl);
+    }
+
+    public ProgressControl updateVersion(ProgressControl progressControl){
+        return progressControlRepository.updateVersion(progressControl);
+    }
+
+    public ProgressControl updateCurNode(ProgressControl progressControl){
+        return progressControlRepository.updateCurNode(progressControl);
     }
 }

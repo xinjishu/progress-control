@@ -12,5 +12,7 @@ public class ProgressControl {
     private  int id;
     private  String girard;
     private  String progress;
+    private int version;
+    private int curNode;
     private List<ProgressSteps> progressStepsList;
 }

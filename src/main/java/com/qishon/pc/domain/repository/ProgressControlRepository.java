@@ -16,5 +16,12 @@ import java.util.Map;
 public interface ProgressControlRepository {
     @Cacheable
     public List<ProgressControl> findByGirard(Map<String, Object> params);
-
+    @Cacheable
+    public ProgressControl addProgressControl(ProgressControl progressControl);
+    @Cacheable
+    public ProgressControl updateProgress(ProgressControl progressControl);
+    @Cacheable
+    public ProgressControl updateVersion(ProgressControl progressControl);
+    @Cacheable
+    public ProgressControl updateCurNode(ProgressControl progressControl);
 }

@@ -18,4 +18,9 @@ public interface ProgressStepsRepository {
     @Cacheable
     public List<ProgressSteps> findByGirardId(Map<String, Object> params);
 
+    @Cacheable
+    public ProgressSteps addProCtrlSteps(ProgressSteps progressSteps);
+
+    @Cacheable
+    public ProgressSteps updateCompletedFiles(ProgressSteps progressSteps);
 }

@@ -8,31 +8,31 @@ public enum GirardEnum {
     /**
      * 款号
      */
-    MODEL(1,"01.Model"),
+    MODEL(1,"01.Model","款号"),
     /**
      * 渲染
      */
-    Render(2,"02.Render"),
+    Render(2,"02.Render","渲染"),
     /**
      * 拼接
      */
-    JOINT (3,"03.Joint"),
+    JOINT (3,"03.Joint","拼接"),
     /**
      * 压缩
      */
-    COMPRESS(4,"04.Compress"),
+    COMPRESS(4,"04.Compress","压缩"),
     /**
      *上传文件服务器
      */
-    UPLOAD(5,"05.Upload"),
+    UPLOAD(5,"05.Upload","上传文件服务器"),
     /**
      * 保存到数据库
      */
-    DATABASE(6,"06.Database"),
+    DATABASE(6,"06.Database","保存到数据库"),
     /**
      * 已完成
      */
-    DONE(7,"07.Done");
+    DONE(7,"07.Done","已完成");
     /**
      * 文件路径
      */
@@ -49,23 +49,34 @@ public enum GirardEnum {
     /**
      * 文件key
      */
-    private int fileNo;
+    private int fileKey;
 
     public int getFileNo() {
-        return fileNo;
+        return fileKey;
     }
 
     public void setFileNo(int fileNo) {
-        this.fileNo = fileNo;
+        this.fileKey = fileNo;
+    }
+
+    private String fileName;
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
     }
 
     /**
-     * @param fileName fileName
+     * @param name fileName
      * @param key fileKey
      */
-    private GirardEnum(int key, String fileName) {
-        fileName = filePtah;
-        key = fileNo;
+    private GirardEnum(int key, String path,String name) {
+        path = filePtah;
+        name = fileName;
+        key = fileKey;
     }
 
     /**
@@ -73,11 +84,11 @@ public enum GirardEnum {
      * @param key
      * @return girardEnum
      */
-    public static String findByKey(int key){
+    public static GirardEnum findByKey(int key){
         GirardEnum[] ges = GirardEnum.values();
         for(GirardEnum girardEnum :ges){
             if (girardEnum.getFileNo() == key);
-            return  girardEnum.getFilePtah();
+            return  girardEnum;
         }
         throw new IllegalArgumentException("Key值非法，无法返回正确的枚举对象");
     }
