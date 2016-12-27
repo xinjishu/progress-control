@@ -2,6 +2,7 @@ package com.qishon.pc.domain.service;
 
 import com.qishon.pc.domain.model.ProgressControl;
 import com.qishon.pc.domain.model.ProgressSteps;
+import com.qishon.pc.domain.repository.ProgressControlRepository;
 import com.qishon.pc.domain.repository.ProgressStepsRepository;
 import com.qishon.pc.domain.util.GirardEnum;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -23,6 +25,9 @@ public class ProgressStepsSerivce {
     private String filePath;
     @Autowired
     ProgressStepsRepository stepsRepository;
+
+    @Autowired
+    ProgressControlRepository controlRepository;
 
     public List<ProgressSteps> findByGirardId(Map<String, Object> params){
         return  stepsRepository.findByGirardId(params);
@@ -71,7 +76,8 @@ public class ProgressStepsSerivce {
             throw new IllegalArgumentException("文件不存在，无法读取");
         }
         try {
-            BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(_filePath+"\\"+fileName),"GBK"));
+            BufferedReader br = new BufferedReader(new InputStreamReader(
+                    new FileInputStream(_filePath+"\\"+fileName),"GBK"));
             String line;
             int num = 0;
             int sum = 0;
@@ -101,8 +107,28 @@ public class ProgressStepsSerivce {
         }
     }
 
-    public int getCompressFiles(ProgressControl progressControl){
-
-        return 0;
+    /**
+     * 获取每一步骤已完成的文件数量
+     * @param progressSteps
+     * @return Integer
+     */
+    public int getCompressFiles(ProgressSteps progressSteps){
+        //获取款号
+        ProgressControl progressControl = controlRepository.findById(progressSteps.getGirardId());
+        //获取当前步骤文件路径: D:\\CloudRender\\步骤编码\\款号\\xx_Color文件夹\\图片文件
+        String curPath = filePath + "\\"+progressSteps.getStepNo()+"\\"+progressControl.getGirard();
+        File file = new File(curPath);
+        if (!file.exists()){
+            throw new IllegalArgumentException("文件路径报错");
+        }
+        File[] files = file.listFiles();
+        int result = 0;
+        for (int k =0;k < files.length;k++){
+            if (files[k].getName().toUpperCase().indexOf("_COLOR") > -1){
+                File renderFile = new File(curPath + "\\"+files[k].getName());
+                result += renderFile.listFiles().length;
+            }
+        }
+        return result;
     }
 }

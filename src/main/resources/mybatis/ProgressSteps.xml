@@ -10,16 +10,16 @@
                ps.stepName,
                ps.allFiles,
                ps.completedFiles
-          From proctrl_steps as ps
+          From progress_steps as ps
         Where ps.girardId = #{girardId}
     </select>
     <insert id="addProCtrlSteps"
         parameterType="com.qishon.pc.domain.model.ProgressSteps">
-        Insert into proctrl_steps(girardId,stepNo,stepName,allFiles,completedFiles)
+        Insert into progress_steps(girardId,stepNo,stepName,allFiles,completedFiles)
             values(#{girardId},#{stepNo},#{stepName},#{allFiles},#{completedFiles})
     </insert>
     <update id="updateCompletedFiles"
              parameterType="com.qishon.pc.domain.model.ProgressSteps">
-        Update proctrl_steps set completedFiles = #{completedFiles} where id = #{id}
+        Update progress_steps set completedFiles = #{completedFiles} where id = #{id}
     </update>
 </mapper>

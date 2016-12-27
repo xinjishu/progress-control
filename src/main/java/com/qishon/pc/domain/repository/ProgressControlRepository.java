@@ -24,4 +24,8 @@ public interface ProgressControlRepository {
     public ProgressControl updateVersion(ProgressControl progressControl);
     @Cacheable
     public ProgressControl updateCurNode(ProgressControl progressControl);
+    @Cacheable
+    public ProgressControl findById(int id);
+    @Cacheable
+    public ProgressControl findByGirardAndProgress(String girard);
 }

@@ -12,6 +12,16 @@
           From progress_control as pc
         Where pc.girard = #{girard}
     </select>
+    <select id="findById"
+            parameterType="int"
+            resultType="com.qishon.pc.domain.model.ProgressControl">
+        Select * from progress_control where id = #{id}
+    </select>
+    <select id="findByGirardAndProgress"
+            parameterType="String"
+            resultType="com.qishon.pc.domain.model.ProgressControl">
+        Select * from progress_control where girard = #{girard} and progress &lt;&gt; "100%"
+    </select>
     <!-- 添加 ProgressControl -->
     <insert id="addProgressControl"
            parameterType="com.qishon.pc.domain.model.ProgressControl">

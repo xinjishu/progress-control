@@ -92,4 +92,18 @@ public enum GirardEnum {
         }
         throw new IllegalArgumentException("Key值非法，无法返回正确的枚举对象");
     }
+
+    /**
+     * 根据文件编码查询
+     * @param code
+     * @return
+     */
+    public static GirardEnum findByPath(String code){
+        GirardEnum[] ges = GirardEnum.values();
+        for(GirardEnum girardEnum :ges){
+            if (girardEnum.getFilePtah().equalsIgnoreCase(code));
+            return  girardEnum;
+        }
+        throw new IllegalArgumentException("Key值非法，无法返回正确的枚举对象");
+    }
 }
