@@ -13,9 +13,17 @@ import java.util.Date;
 public class Sender {
     @Autowired
     private AmqpTemplate rabbitTemplate;
-    public void send() {
-        String context = "hello " + new Date();
+
+    /**
+     * 发送信息
+     * @param girardId 款号Id
+     * @param modelName 模型名称
+     * @param taskName 执行的任务
+     */
+    public void send(int girardId,String modelName,String taskName) {
+        String stepsName = GirardEnum.findByKey(girardId).getFileName();
+        String context = stepsName+"," + modelName + ","+taskName+","+new Date();
         System.out.println("Sender : " + context);
-        this.rabbitTemplate.convertAndSend("hello", context);
+        this.rabbitTemplate.convertAndSend("progressControl", context);
     }
 }

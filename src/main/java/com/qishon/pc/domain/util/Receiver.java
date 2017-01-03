@@ -8,10 +8,10 @@ import org.springframework.stereotype.Component;
  * Created by xm on 2016/12/25.
  */
 @Component
-@RabbitListener(queues = "hello")
+@RabbitListener(queues = "progressControl")
 public class Receiver {
     @RabbitHandler
-    public void process(String hello) {
-        System.out.println("Receiver : " + hello);
+    public void process(String msg) {
+        System.out.println("Receiver : " + msg);
     }
 }

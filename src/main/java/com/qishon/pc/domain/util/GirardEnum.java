@@ -74,9 +74,9 @@ public enum GirardEnum {
      * @param key fileKey
      */
     private GirardEnum(int key, String path,String name) {
-        path = filePtah;
-        name = fileName;
-        key = fileKey;
+        filePtah = path;
+        fileName = name;
+        fileKey = key;
     }
 
     /**
