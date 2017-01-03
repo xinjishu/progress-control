@@ -17,6 +17,6 @@ public class HelloApplicationTests {
     private Sender sender;
     @Test
     public void hello() throws Exception {
-        sender.send();
+        sender.send(1,"ANTA24","渲染");
     }
 }
