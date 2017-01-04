@@ -8,31 +8,31 @@ public enum GirardEnum {
     /**
      * 款号
      */
-    MODEL(1,"01.Model","款号"),
+    MODEL(1,"01.Model","款号","progressControl"),
     /**
      * 渲染
      */
-    Render(2,"02.Render","渲染"),
+    Render(2,"02.Render","渲染","renderReceiver"),
     /**
      * 拼接
      */
-    JOINT (3,"03.Joint","拼接"),
+    JOINT (3,"03.Joint","拼接","jointReceiver"),
     /**
      * 压缩
      */
-    COMPRESS(4,"04.Compress","压缩"),
+    COMPRESS(4,"04.Compress","压缩","compressReceiver"),
     /**
      *上传文件服务器
      */
-    UPLOAD(5,"05.Upload","上传文件服务器"),
+    UPLOAD(5,"05.Upload","上传文件服务器","uploadReceiver"),
     /**
      * 保存到数据库
      */
-    DATABASE(6,"06.Database","保存到数据库"),
+    DATABASE(6,"06.Database","保存到数据库","databaseReceiver"),
     /**
      * 已完成
      */
-    DONE(7,"07.Done","已完成");
+    DONE(7,"07.Done","已完成","doneReceiver");
     /**
      * 文件路径
      */
@@ -44,6 +44,16 @@ public enum GirardEnum {
 
     public void setFilePtah(String filePtah) {
         this.filePtah = filePtah;
+    }
+
+    private String sendCode;
+
+    public String getSendCode() {
+        return sendCode;
+    }
+
+    public void setSendCode(String sendCode) {
+        this.sendCode = sendCode;
     }
 
     /**
@@ -73,7 +83,8 @@ public enum GirardEnum {
      * @param name fileName
      * @param key fileKey
      */
-    private GirardEnum(int key, String path,String name) {
+    private GirardEnum(int key, String path,String name,String code) {
+        sendCode = code;
         filePtah = path;
         fileName = name;
         fileKey = key;
