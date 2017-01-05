@@ -20,10 +20,10 @@ public class Sender {
      * @param modelName 模型名称
      * @param taskName 执行的任务
      */
-    public void send(int girardId,String modelName,String taskName) {
+    public void send(int girardId,String modelName,String taskName,String sendType) {
         String stepsName = GirardEnum.findByKey(girardId).getFileName();
-        String context = stepsName+"," + modelName + ","+taskName+","+new Date();
+        String context = girardId+","+stepsName+"," + modelName + ","+taskName+","+sendType;
         System.out.println("Sender : " + context);
-        this.rabbitTemplate.convertAndSend("progressControl", context);
+        this.rabbitTemplate.convertAndSend(sendType, context);
     }
 }
