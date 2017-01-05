@@ -28,4 +28,6 @@ public interface ProgressControlRepository {
     public ProgressControl findById(int id);
     @Cacheable
     public ProgressControl findByGirardAndProgress(String girard);
+    @Cacheable
+    public int countVersion();
 }

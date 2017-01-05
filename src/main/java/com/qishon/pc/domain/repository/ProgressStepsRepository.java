@@ -23,4 +23,7 @@ public interface ProgressStepsRepository {
 
     @Cacheable
     public ProgressSteps updateCompletedFiles(ProgressSteps progressSteps);
+
+    @Cacheable
+    public ProgressSteps findByGirardIdAndStepName(ProgressSteps progressSteps);
 }

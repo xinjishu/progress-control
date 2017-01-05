@@ -1,6 +1,6 @@
 package com.qishon.pc.domain.service;
 
-import com.qishon.pc.domain.util.RenderUtil;
+import com.qishon.pc.domain.util.JointUtil;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Value;
 
@@ -20,6 +20,6 @@ public class JointReceiverService {
         String filePath  = strArr[3];
         String path= runPath + "\\" + filePath;
         boolean isX=true;
-        RenderUtil.SplitJoint(path,isX);
+        JointUtil.SplitJoint(path,isX);
     }
 }

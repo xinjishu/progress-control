@@ -36,6 +36,13 @@ public class ProgressStepsSerivce {
     public ProgressSteps updateCompletedFiles(ProgressSteps progressSteps){
         return stepsRepository.updateCompletedFiles(progressSteps);
     }
+
+    public ProgressSteps findByGirardIdAndStepName(int girardId,String stepName){
+        ProgressSteps progressSteps = new ProgressSteps();
+        progressSteps.setGirardId(girardId);
+        progressSteps.setStepName(stepName);
+        return stepsRepository.findByGirardIdAndStepName(progressSteps);
+    }
     /**
      * 添加步骤记录
      * @param stepKey 步骤枚举key
@@ -62,7 +69,7 @@ public class ProgressStepsSerivce {
         String _filePath = filePath + "\\" + GirardEnum.findByKey(1).getFilePtah()+"\\"+progressControl.getGirard();
         File file = new File(_filePath);
         if (!file.exists()){
-            throw new IllegalArgumentException("文件不存在，无法读取");
+            return 0;
         }
         File[] files = file.listFiles();
         String fileName = "";
@@ -119,7 +126,7 @@ public class ProgressStepsSerivce {
         String curPath = filePath + "\\"+progressSteps.getStepNo()+"\\"+progressControl.getGirard();
         File file = new File(curPath);
         if (!file.exists()){
-            throw new IllegalArgumentException("文件路径报错");
+            return 0;
         }
         File[] files = file.listFiles();
         int result = 0;

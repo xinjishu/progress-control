@@ -104,5 +104,7 @@ public class ProgressControlService {
         progressControl.setCurNode(value);
         return progressControlRepository.updateProgress(progressControl);
     }
-
+    public int countVersion(){
+        return progressControlRepository.countVersion();
+    }
 }
