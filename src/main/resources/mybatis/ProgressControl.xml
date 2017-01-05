@@ -22,6 +22,11 @@
             resultType="com.qishon.pc.domain.model.ProgressControl">
         Select * from progress_control where girard = #{girard} and progress &lt;&gt; "100%"
     </select>
+    <select id="countVersion"
+            parameterType="String"
+            resultType="com.qishon.pc.domain.model.ProgressControl">
+        Select count(id) from  progress_control
+    </select>
     <!-- 添加 ProgressControl -->
     <insert id="addProgressControl"
            parameterType="com.qishon.pc.domain.model.ProgressControl">

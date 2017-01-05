@@ -13,6 +13,11 @@
           From progress_steps as ps
         Where ps.girardId = #{girardId}
     </select>
+    <select id="findByGirardIdAndStepName"
+            parameterType="com.qishon.pc.domain.model.ProgressSteps"
+            resultType="com.qishon.pc.domain.model.ProgressSteps">
+        select * from progress_steps as ps where ps.girardId = #{girardId} and ps.stepName = #{stepName}
+    </select>
     <insert id="addProCtrlSteps"
         parameterType="com.qishon.pc.domain.model.ProgressSteps">
         Insert into progress_steps(girardId,stepNo,stepName,allFiles,completedFiles)
