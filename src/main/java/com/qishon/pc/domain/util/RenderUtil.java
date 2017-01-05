@@ -62,12 +62,12 @@ public class RenderUtil{
         fileOutputStream.write(("tjhUI;\r\n").getBytes());
         fileOutputStream.close();
         //执行.mel文件
-//        String commandStr = "cmd /c "+scriptFile;
-//        if (this.exeCmd(commandStr)){
-//            log.info("userSetup.mel文件执行成功");
-//        }else {
-//            log.info("userSetup.mel文件执行失败");
-//        }
+        String commandStr = "cmd /c "+scriptFile;
+        if (this.exeCmd(commandStr)){
+            log.info("userSetup.mel文件执行成功");
+        }else {
+            log.info("userSetup.mel文件执行失败");
+        }
     }
 
     /**
