@@ -12,7 +12,7 @@ import java.util.List;
  * Created by yongwei.chen on 2016/12/26.
  * 图片拼接工具类
  */
-public class RenderUtil {
+public class JointUtil {
 
     /**
      *
